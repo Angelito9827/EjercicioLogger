@@ -7,12 +7,13 @@ import java.util.Scanner;
 
 public class PetApp {
 
-    // TODO Logger declaration
+    private final Logger logger = Logger.getInstance();
 
     public static void main (String[] args) {
+        PetApp app = new PetApp();
         ControllerFactory controllerFactory = new ControllerFactory();
         boolean end = false;
-        System.out.println("Pet app has been initiated"); // TODO Logger
+        app.logger.debug("Pet app has been initiated");
         while (!end) {
             String command = waitForNewCommand();
             String[] commandArgs = command.split(":");
@@ -58,7 +59,7 @@ public class PetApp {
                 System.out.println("Bad command error");
             }
         }
-        System.out.println("Pet app has been ended"); // TODO Logger
+        app.logger.debug("Pet app has been ended");
     }
 
     private static String getGetParam(String[] commandArgs) throws BadCommandException {
